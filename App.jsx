@@ -1,66 +1,4 @@
-/*import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Leads from "./pages/Leads";
-import Customers from "./pages/Customers";
-import Analytics from "./pages/Analytics";
-import Communication from "./pages/Communication";
-import Profile from "./pages/Profile";
-import AdminPanel from "./pages/AdminPanel";
-import Sidebar from "./components/Sidebar";
-import EditProfile from "./pages/EditProfile";
-
-function Layout({ children }) {
-  return (
-    <div className="flex h-screen bg-gray-100">
-      <Sidebar />
-      <div className="flex-1 overflow-auto ml-64 p-8">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function App() {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-
-  // Page load pe localStorage se data uthao
-  useEffect(() => {
-    const savedToken = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
-    
-    if(savedToken) setToken(savedToken);
-    if(savedUser) setUser(JSON.parse(savedUser));
-  }, []);
-
-  // User update karne ka function
-  const updateUser = (newUser) => {
-    setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
-  }
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={!token ? <Login setUser={setUser} setToken={setToken} /> : <Navigate to="/dashboard" />} />
-
-        <Route path="/dashboard" element={token ? <Layout><Dashboard /></Layout> : <Navigate to="/" />} />
-        <Route path="/leads" element={token ? <Layout><Leads /></Layout> : <Navigate to="/" />} />
-        <Route path="/customers" element={token ? <Layout><Customers /></Layout> : <Navigate to="/" />} />
-        <Route path="/analytics" element={token ? <Layout><Analytics /></Layout> : <Navigate to="/" />} />
-        <Route path="/communication" element={token ? <Layout><Communication /></Layout> : <Navigate to="/" />} />
-        <Route path="/profile" element={token ? <Layout><Profile user={user} /></Layout> : <Navigate to="/" />} />
-        <Route path="/admin" element={token ? <Layout><AdminPanel /></Layout> : <Navigate to="/" />} />
-        <Route path="/edit-profile" element={token ? <Layout><EditProfile user={user} setUser={updateUser} /></Layout> : <Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;*/
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Leads from "./pages/Leads";
@@ -85,7 +23,7 @@ function layout({children}){
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         <Route path="/" element={<Login />} />
@@ -107,7 +45,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
